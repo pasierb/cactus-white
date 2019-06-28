@@ -1,7 +1,13 @@
 <!-- jquery -->
-<%- js('lib/jquery/jquery.min') %>
-<%- js('lib/justified-gallery/jquery.justifiedGallery.min.js') %>
+<!-- <%- js('lib/jquery/jquery.min') %> -->
+<!-- <%- js('lib/justified-gallery/jquery.justifiedGallery.min.js') %> -->
 <%- js('js/main') %>
+<!-- additional js -->
+<% if (theme.customize.scripts) { %>
+  <% for(var i in theme.customize.scripts) { %>
+    <%- js(theme.customize.scripts[i]) %>
+  <% } %>
+<% } %>
 <% if (page.search){ %>
 <!-- search -->
   <%- js('js/search.js') %>

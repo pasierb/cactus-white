@@ -15,7 +15,7 @@
 </section>
 
 <section id="writing">
-  <span class="h1"><a href="<%- url_for("posts") %>">Writing</a></span>
+  <span class="h1"><a href="<%- url_for('archives') %>">Writing</a></span>
   <ul class="post-list">
     <% if (theme.customize.show_all_posts) { %>
       <% var show_posts = page.posts.sort('date', 'desc') %>
@@ -36,11 +36,36 @@
 
 <% if (site.data.projects) { %>
 <section id="projects">
-  <span class="h1"><a href="<%- url_for(theme.projects_url) %>">Projects</a></span>
-  <ul class="project-list">
+  <h1>Projects</h1>
+  <ul class="post-list">
     <% for(var obj in site.data.projects){ %>
-      <li class="project-item">
-        <a href="<%= site.data.projects[obj].url %>"><%= site.data.projects[obj].name %></a>: <%= site.data.projects[obj].desc %>
+      <li class="post-item">
+        <div class="meta">
+<a href="<%= site.data.projects[obj].url %>"><%= site.data.projects[obj].name %></a>
+        </div>
+        <span>
+
+          <%= site.data.projects[obj].desc %>
+        </span>
+      </li>
+    <% } %>
+  </ul>
+</section>
+<% } %>
+
+<% if (site.data.talks) { %>
+<section>
+  <h1>Talks</h1>
+  <ul class="post-list">
+    <% for(var obj in site.data.talks){ %>
+      <li class="post-item">
+        <div class="meta">
+          <time datetime="<%= site.data.talks[obj].date %>" itemprop="date"><%= date(site.data.talks[obj].date, config.date_format) %></time><br />
+          <%= site.data.talks[obj].organizer %>
+        </div>
+        <span>
+          <a href="<%= site.data.talks[obj].url %>" target="_blank"><%= site.data.talks[obj].name %></a>
+        </span>
       </li>
     <% } %>
   </ul>
