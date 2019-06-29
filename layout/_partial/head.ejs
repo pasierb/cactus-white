@@ -7,6 +7,9 @@
     <meta name="description" content="<%= config.description %>" />
     <meta name="author" content="<%= config.author %>" />
     <meta name="keywords" content="<%= config.keywords %>" />
+    <% if (theme.manifest) { %>
+      <link rel="manifest" href="<%= url_for(theme.manifest) %>">
+    <% } %>
     <%- meta(page) %>
     <% if (theme.customize.favicon) { %>
         <% if (theme.customize.favicon.desktop) { %>
