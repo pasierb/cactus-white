@@ -7,7 +7,11 @@
       Find me on
       <ul id="socialinfo">
         <% for(var i in theme.customize.social_links) { %>
-          <li><a class="icon" target="_blank" href="<%- url_for(theme.customize.social_links[i]) %>"><i class="fa fa-<%= i %>"></i></a></li>
+          <li>
+            <a class="icon" target="_blank" rel="noopener" href="<%- url_for(theme.customize.social_links[i]) %>" aria-label="<%= i %> profile">
+              <i class="fa fa-<%= i %>"></i>
+            </a>
+          </li>
         <% } %>
       </ul>.
     <% } %>
@@ -41,7 +45,9 @@
     <% for(var obj in site.data.projects){ %>
       <li class="post-item">
         <div class="meta">
-<a href="<%= site.data.projects[obj].url %>"><%= site.data.projects[obj].name %></a>
+          <a href="<%= site.data.projects[obj].url %>" rel="noopener" target="_blank">
+            <%= site.data.projects[obj].name %>
+          </a>
         </div>
         <span>
 
@@ -64,7 +70,9 @@
           <%= site.data.talks[obj].organizer %>
         </div>
         <span>
-          <a href="<%= site.data.talks[obj].url %>" target="_blank"><%= site.data.talks[obj].name %></a>
+          <a href="<%= site.data.talks[obj].url %>" target="_blank" rel="noopener">
+            <%= site.data.talks[obj].name %>
+          </a>
         </span>
       </li>
     <% } %>
