@@ -5,8 +5,14 @@
   <div class="footer-right">
     <nav>
       <ul>
-        <% for (var i in theme.nav) { %> 
-          <li><a href="<%- url_for(theme.nav[i]) %>"><%= i %></a></li>
+        <% for (var key in theme.nav) { %> 
+          <li>
+            <% if (theme.nav[key].startsWith('http')) { %>
+              <a href="<%- url_for(theme.nav[key]) %>" rel="noopener"><%= key %></a>
+            <% } else { %>
+              <a href="<%- url_for(theme.nav[key]) %>"><%= key %></a>
+            <% } %>
+          </li>
         <% } %>
       </ul>
     </nav>
